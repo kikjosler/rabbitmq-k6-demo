@@ -1,4 +1,4 @@
-# 🐰 FastAPI + RabbitMQ + k6 — Тестирование нагрузки очередей сообщений
+# FastAPI + RabbitMQ + k6 — Тестирование нагрузки очередей сообщений
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-v0.115-blue?logo=fastapi&logoColor=white)](http://localhost:8000/docs)
 [![RabbitMQ](https://img.shields.io/badge/RabbitMQ-3.13-orange?logo=rabbitmq&logoColor=white)](http://localhost:15672)

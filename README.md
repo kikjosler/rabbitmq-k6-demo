@@ -8,3 +8,15 @@
 **docker compose up -d → 100 VU → RabbitMQ 6000+ заказов/мин → 0% ошибок**
 
 ## Production сценарий интернет-магазина
+
+Запуск
+```bash
+# 1. Стек (FastAPI + RabbitMQ)
+docker compose up --build -d
+
+# 2. Нагрузка Black Friday (6000 заказов)  
+k6 run k6-load-test.js
+
+# 3. E2E проверка (Playwright - RabbitMQ UI)
+python playwright-test.py
+

@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"    # AMQP
+      - "15672:15672"  # Management UI
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
+  fastapi:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
+
+  # k6 будет запускаться снаружи
